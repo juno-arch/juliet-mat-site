@@ -1,8 +1,8 @@
 # Juliet O'Barr — Muscle Activation Techniques
 
 Website for Juliet O'Barr's MAT® practice
-(1225 Central Ave, Suite 8A, McKinleyville, CA). Built as a gift by Taya,
-designed to be handed over completely.
+(1225 Central Ave, Suite 8A, McKinleyville, CA). Built by Taya, who hosts
+and maintains it — Juliet decided the site stays on this account.
 
 ## What's in here
 
@@ -22,13 +22,13 @@ Repo **Settings → Pages → Source: Deploy from a branch → main / (root) →
 The site appears at `https://<account>.github.io/juliet-mat-site/` a few
 minutes later.
 
-## Handing it over to Juliet
+## Ownership
 
-1. Juliet creates a free GitHub account
-2. This repo: **Settings → General → Transfer ownership** → her username
-3. She accepts the emailed invite — the repo, site, and history are hers
-4. She re-enables Pages under her account (same one-minute step as above;
-   her URL becomes `https://<her-username>.github.io/juliet-mat-site/`)
+The repo lives on Taya's account by Juliet's choice; the live URL is
+`https://juno-arch.github.io/juliet-mat-site/`. If Juliet ever wants to
+take it over: she makes a free GitHub account, Taya transfers the repo
+(**Settings → General → Transfer ownership**), she accepts the emailed
+invite and re-enables Pages — the repo, site, and history become hers.
 
 ## Still to fill in
 
