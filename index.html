@@ -1,6 +1,7 @@
 <title>Juliet O'Barr Studio</title>
 <style>
   :root {
+    color-scheme: light;
     --cream: #faf3eb;
     --blush: #f3e5d5;
     --card: #f7ede1;
@@ -14,40 +15,6 @@
     --hairline: #e8dac6;
     --focus: #5f6739;
     --slot-taken: #e7d8c4;
-    --on-dark: #f4e9db;
-  }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --cream: #201913;
-      --blush: #2c2319;
-      --card: #2a211a;
-      --bark: #17120d;
-      --bark-2: #241b12;
-      --ink: #efe4d4;
-      --ink-soft: #b3a28c;
-      --olive: #99a464;
-      --olive-deep: #aeb97a;
-      --bronze: #c9b463;
-      --hairline: #3d3225;
-      --focus: #99a464;
-      --slot-taken: #352a1e;
-      --on-dark: #f4e9db;
-    }
-  }
-  :root[data-theme="dark"] {
-    --cream: #201913;
-    --blush: #2c2319;
-    --card: #2a211a;
-    --bark: #17120d;
-    --bark-2: #241b12;
-    --ink: #efe4d4;
-    --ink-soft: #b3a28c;
-    --olive: #99a464;
-    --olive-deep: #aeb97a;
-    --bronze: #c9b463;
-    --hairline: #3d3225;
-    --focus: #99a464;
-    --slot-taken: #352a1e;
     --on-dark: #f4e9db;
   }
 
@@ -100,12 +67,6 @@
   .btn.secondary:hover { background: var(--blush); }
   .btn.quiet::after { content: ""; }
   .btn:disabled { opacity: 0.45; cursor: not-allowed; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .btn { color: #201913; }
-    :root:not([data-theme="light"]) .btn.secondary { color: var(--olive); background: transparent; }
-  }
-  :root[data-theme="dark"] .btn { color: #201913; }
-  :root[data-theme="dark"] .btn.secondary { color: var(--olive); background: transparent; }
 
   /* ---------- hero: full-bleed photo band ---------- */
   /* When Juliet's photo is ready, add to .hero-band:
@@ -268,12 +229,6 @@
   .compare .mat-side .label { color: var(--cream); opacity: 0.85; }
   .compare p { font-size: 16px; color: var(--ink-soft); }
   .compare .mat-side p { color: var(--cream); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .compare .mat-side p,
-    :root:not([data-theme="light"]) .compare .mat-side .label { color: #201913; }
-  }
-  :root[data-theme="dark"] .compare .mat-side p,
-  :root[data-theme="dark"] .compare .mat-side .label { color: #201913; }
 
   .who-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
   .who { border: 1px solid var(--hairline); background: var(--card); border-radius: 999px; padding: 11px 22px; font-size: 15px; color: var(--ink-soft); }
@@ -314,10 +269,6 @@
   }
   .rate .price.big small { font-family: 'Figtree', sans-serif; font-style: normal; font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
   .rate p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .rate.flat p, :root:not([data-theme="light"]) .rate .price.big { color: #201913; }
-  }
-  :root[data-theme="dark"] .rate.flat p, :root[data-theme="dark"] .rate .price.big { color: #201913; }
 
   /* ---------- booking band + card ---------- */
   .band .book-mode {
@@ -355,10 +306,6 @@
   }
   .slot.taken { background: var(--slot-taken); color: var(--ink-soft); text-decoration: line-through; cursor: not-allowed; border-color: transparent; }
   .slot.active { background: var(--olive); border-color: var(--olive); color: var(--cream); }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .slot.active { color: #201913; }
-  }
-  :root[data-theme="dark"] .slot.active { color: #201913; }
 
   .book-summary { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); font-size: 15px; color: var(--ink-soft); min-height: 24px; }
   .book-summary b { color: var(--olive-deep); }
