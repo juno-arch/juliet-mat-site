@@ -1,0 +1,937 @@
+<title>Juliet O'Barr Studio</title>
+<style>
+  :root {
+    --cream: #faf3eb;
+    --blush: #f3e5d5;
+    --card: #f7ede1;
+    --bark: #3c3129;
+    --bark-2: #55432f;
+    --ink: #40372f;
+    --ink-soft: #85755f;
+    --olive: #78814b;
+    --olive-deep: #5f6739;
+    --bronze: #6b5d2a;
+    --hairline: #e8dac6;
+    --focus: #5f6739;
+    --slot-taken: #e7d8c4;
+    --on-dark: #f4e9db;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --cream: #201913;
+      --blush: #2c2319;
+      --card: #2a211a;
+      --bark: #17120d;
+      --bark-2: #241b12;
+      --ink: #efe4d4;
+      --ink-soft: #b3a28c;
+      --olive: #99a464;
+      --olive-deep: #aeb97a;
+      --bronze: #c9b463;
+      --hairline: #3d3225;
+      --focus: #99a464;
+      --slot-taken: #352a1e;
+      --on-dark: #f4e9db;
+    }
+  }
+  :root[data-theme="dark"] {
+    --cream: #201913;
+    --blush: #2c2319;
+    --card: #2a211a;
+    --bark: #17120d;
+    --bark-2: #241b12;
+    --ink: #efe4d4;
+    --ink-soft: #b3a28c;
+    --olive: #99a464;
+    --olive-deep: #aeb97a;
+    --bronze: #c9b463;
+    --hairline: #3d3225;
+    --focus: #99a464;
+    --slot-taken: #352a1e;
+    --on-dark: #f4e9db;
+  }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Figtree', 'Segoe UI', system-ui, sans-serif;
+    font-size: 17.5px;
+    line-height: 1.7;
+  }
+  .gutter { padding-inline: 20px; }
+  .wrap { max-width: 1020px; margin: 0 auto; }
+  .narrow { max-width: 720px; margin: 0 auto; }
+
+  /* ---------- scroll reveal ---------- */
+  .reveal.pre { opacity: 0; transform: translateY(30px); }
+  .reveal.in { opacity: 1; transform: none; transition: opacity 0.8s cubic-bezier(.2,.7,.3,1), transform 0.8s cubic-bezier(.2,.7,.3,1); }
+  .stats .reveal.in:nth-child(2) { transition-delay: 0.12s; }
+  .stats .reveal.in:nth-child(3) { transition-delay: 0.24s; }
+  .stats .reveal.in:nth-child(4) { transition-delay: 0.36s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal.pre { opacity: 1; transform: none; }
+  }
+
+  /* ---------- header ---------- */
+  .site-head {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    flex-wrap: wrap; max-width: 1020px; margin: 0 auto; padding-block: 26px 0;
+  }
+  .brand { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 21px; color: var(--bronze); }
+  .brand em { font-style: italic; font-weight: 400; color: var(--olive-deep); }
+  nav { display: flex; gap: 26px; flex-wrap: wrap; font-size: 13px; font-weight: 600; }
+  nav a { color: var(--ink-soft); text-decoration: none; letter-spacing: 0.14em; text-transform: uppercase; }
+  nav a:hover, nav a:focus-visible { color: var(--olive-deep); }
+  a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--focus); outline-offset: 3px;
+  }
+
+  /* ---------- buttons ---------- */
+  .btn {
+    display: inline-block; text-decoration: none; text-align: center; cursor: pointer;
+    font-family: 'Figtree', sans-serif; font-weight: 600; font-size: 16px;
+    padding: 15px 30px; border-radius: 999px;
+    background: var(--olive); color: var(--cream); border: 1px solid var(--olive);
+    transition: background 0.2s ease;
+  }
+  .btn::after { content: " \2192"; }
+  .btn:hover { background: var(--olive-deep); border-color: var(--olive-deep); }
+  .btn.secondary { background: transparent; color: var(--olive-deep); }
+  .btn.secondary:hover { background: var(--blush); }
+  .btn.quiet::after { content: ""; }
+  .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .btn { color: #201913; }
+    :root:not([data-theme="light"]) .btn.secondary { color: var(--olive); background: transparent; }
+  }
+  :root[data-theme="dark"] .btn { color: #201913; }
+  :root[data-theme="dark"] .btn.secondary { color: var(--olive); background: transparent; }
+
+  /* ---------- hero: full-bleed photo band ---------- */
+  /* When Juliet's photo is ready, add to .hero-band:
+       background: linear-gradient(rgba(60,49,41,0.45), rgba(60,49,41,0.55)),
+                   url('juliet-hero.jpg') center 30% / cover no-repeat;      */
+  .hero-band {
+    min-height: 94svh;
+    display: flex; flex-direction: column;
+    background:
+      radial-gradient(130% 100% at 50% 0%, var(--bark-2) 0%, var(--bark) 70%);
+    color: var(--on-dark);
+    position: relative;
+    overflow: hidden;
+  }
+  canvas.scene { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; }
+  .hero-band > .gutter, .hero-band > .hero-center, .hero-band > .photo-hint { position: relative; z-index: 1; }
+  .hero-band .photo-hint {
+    position: absolute; top: 16px; right: 20px;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+    color: var(--on-dark); opacity: 0.45; z-index: 2;
+  }
+  .hero-band .site-head { width: 100%; }
+  .hero-band .brand { color: var(--on-dark); }
+  .hero-band .brand em { color: var(--olive); }
+  .hero-band nav a { color: var(--on-dark); opacity: 0.75; }
+  .hero-band nav a:hover, .hero-band nav a:focus-visible { opacity: 1; color: var(--on-dark); }
+  .hero-center {
+    flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding-block: 70px 90px;
+  }
+  .eyebrow {
+    font-size: 12.5px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--olive); font-weight: 600; margin-bottom: 26px;
+  }
+  h1 {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 480;
+    font-size: clamp(44px, 8vw, 84px); line-height: 1.05; text-wrap: balance;
+    letter-spacing: -0.015em; color: var(--on-dark);
+    max-width: 18ch; margin-inline: auto; margin-bottom: 24px;
+  }
+  h1 em { font-style: italic; font-weight: 400; color: var(--on-dark); }
+  .hero-center p {
+    max-width: 44ch; margin-inline: auto;
+    color: var(--on-dark); opacity: 0.88;
+    font-size: clamp(18px, 4vw, 21px);
+  }
+  .hero-center p strong { font-weight: 600; color: var(--on-dark); }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 38px; align-items: center; justify-content: center; }
+  .hero-band .btn.secondary { color: var(--on-dark); border-color: var(--on-dark); opacity: 0.85; }
+  .hero-band .btn.secondary:hover { background: rgba(244, 233, 219, 0.12); opacity: 1; }
+
+  /* ---------- sections ---------- */
+  section { padding-block: 96px; }
+  .kicker {
+    font-size: 12.5px; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--olive-deep); font-weight: 600; margin-bottom: 18px;
+  }
+  h2 {
+    font-family: 'Fraunces', Georgia, serif; font-weight: 480;
+    font-size: clamp(34px, 6.2vw, 62px); line-height: 1.08;
+    margin-bottom: 18px; text-wrap: balance; letter-spacing: -0.01em; color: var(--bronze);
+  }
+  h2 em { font-style: italic; font-weight: 400; color: var(--olive-deep); }
+  .section-intro { max-width: 54ch; color: var(--ink-soft); margin-bottom: 34px; font-size: 18.5px; }
+
+  /* split: text + photo */
+  .split { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+  .split.flip { grid-template-columns: 0.95fr 1.05fr; }
+  .prose p { color: var(--ink-soft); font-size: 18px; }
+  .prose p + p { margin-top: 18px; }
+  .prose strong { color: var(--ink); font-weight: 600; }
+
+  .photo-block {
+    aspect-ratio: 4 / 4.6; border-radius: 26px; background: var(--blush);
+    display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+    position: relative; overflow: hidden; margin: 0;
+  }
+  .photo-block figcaption {
+    position: relative; z-index: 1; margin-bottom: 18px;
+    font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
+    color: var(--on-dark); background: rgba(50, 40, 30, 0.55);
+    border-radius: 999px; padding: 7px 16px; text-align: center; max-width: 80%;
+  }
+  .photo-block.short { aspect-ratio: 4 / 3.4; }
+
+  .principle {
+    margin-top: 44px;
+    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 400;
+    font-size: clamp(24px, 4.8vw, 36px); line-height: 1.3;
+    max-width: 38ch; text-wrap: balance; color: var(--olive-deep);
+  }
+  .principle small {
+    display: block; font-family: 'Figtree', sans-serif; font-style: normal;
+    font-size: 12px; color: var(--ink-soft); margin-top: 14px;
+    letter-spacing: 0.26em; text-transform: uppercase; font-weight: 600;
+  }
+
+  /* by the numbers */
+  .numbers-head { margin-bottom: 40px; }
+  .stats { display: flex; flex-direction: column; gap: 18px; }
+  .stat {
+    background: var(--blush); border-radius: 18px; padding: 26px 28px;
+  }
+  .stat b {
+    display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 480;
+    font-size: clamp(40px, 6vw, 58px); line-height: 1.05; color: var(--bronze);
+    font-variant-numeric: tabular-nums; margin-bottom: 6px;
+  }
+  .stat span { font-size: 16.5px; color: var(--ink-soft); }
+  .stat span strong { color: var(--ink); font-weight: 600; }
+
+  /* process on dark band */
+  .band {
+    background:
+      radial-gradient(120% 90% at 20% 0%, var(--bark-2) 0%, var(--bark) 62%);
+    color: var(--on-dark);
+    padding-block: 110px;
+    position: relative;
+    overflow: hidden;
+  }
+  .band > .gutter, .band > .photo-hint { position: relative; z-index: 1; }
+  .band .photo-hint {
+    position: absolute; top: 18px; right: 22px;
+    font-size: 10.5px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600;
+    color: var(--on-dark); opacity: 0.45;
+  }
+  .band .kicker { color: var(--olive); }
+  .band h2 { color: var(--on-dark); }
+  .band h2 em { color: var(--olive); }
+
+  .float-card {
+    background: var(--card); color: var(--ink);
+    border-radius: 30px; padding: 46px 42px;
+    max-width: 920px; margin: 0 auto;
+    box-shadow: 0 30px 80px rgba(20, 12, 5, 0.35);
+  }
+  .float-card > .kicker { color: var(--olive-deep); }
+  .float-card h2 { color: var(--bronze); font-size: clamp(30px, 5vw, 46px); }
+
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; counter-reset: step; list-style: none; }
+  .steps li { counter-increment: step; background: var(--blush); border-radius: 999px 999px 18px 18px; padding: 30px 18px 24px; text-align: center; }
+  .steps li::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 17px; color: var(--olive-deep);
+    display: block; margin-bottom: 10px;
+  }
+  .steps b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 20px; margin-bottom: 8px; color: var(--bronze); }
+  .steps span { font-size: 14px; color: var(--ink-soft); line-height: 1.55; display: block; }
+  .note-expect { margin-top: 26px; font-size: 15.5px; color: var(--ink-soft); max-width: 62ch; }
+  .note-expect b { color: var(--ink); }
+
+  /* compare + who */
+  .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 40px; }
+  .compare > div { border-radius: 22px; padding: 30px 30px 26px; }
+  .compare .them { background: var(--blush); }
+  .compare .mat-side { background: var(--olive); }
+  .compare .label { font-size: 11.5px; letter-spacing: 0.24em; text-transform: uppercase; font-weight: 600; margin-bottom: 12px; }
+  .compare .them .label { color: var(--ink-soft); }
+  .compare .mat-side .label { color: var(--cream); opacity: 0.85; }
+  .compare p { font-size: 16px; color: var(--ink-soft); }
+  .compare .mat-side p { color: var(--cream); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .compare .mat-side p,
+    :root:not([data-theme="light"]) .compare .mat-side .label { color: #201913; }
+  }
+  :root[data-theme="dark"] .compare .mat-side p,
+  :root[data-theme="dark"] .compare .mat-side .label { color: #201913; }
+
+  .who-grid { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 34px; }
+  .who { border: 1px solid var(--hairline); background: var(--card); border-radius: 999px; padding: 11px 22px; font-size: 15px; color: var(--ink-soft); }
+  .who b { color: var(--olive-deep); font-weight: 600; }
+
+  /* reviews */
+  .quotes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 44px; align-items: start; }
+  .quote { background: var(--card); border: 1px solid var(--hairline); border-radius: 22px; padding: 32px 30px 28px; }
+  .quote.feature { background: var(--blush); border-color: transparent; margin-top: 26px; }
+  .quote .stars { color: var(--olive-deep); font-size: 15px; letter-spacing: 0.3em; margin-bottom: 14px; }
+  .quote p {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic;
+    font-size: 20px; line-height: 1.45; color: var(--ink); text-wrap: pretty;
+  }
+  .quote.feature p { font-size: 23px; }
+  .quote cite {
+    display: block; margin-top: 18px; font-style: normal;
+    font-size: 11.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 600; color: var(--ink-soft);
+  }
+  .quotes .reveal.in:nth-child(2) { transition-delay: 0.12s; }
+  .quotes .reveal.in:nth-child(3) { transition-delay: 0.24s; }
+  .sample-note {
+    margin-top: 22px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    font-weight: 600; color: var(--ink-soft);
+  }
+
+  /* rates */
+  .rates { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; margin-top: 40px; }
+  .rate { background: var(--card); border: 1px solid var(--hairline); border-radius: 22px; padding: 32px 30px; display: flex; flex-direction: column; gap: 10px; }
+  .rate.flat { background: var(--olive); border-color: var(--olive); }
+  .rate.flat p { color: var(--cream); opacity: 0.9; }
+  .rate h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 21px; color: var(--bronze); }
+  .rate .price.big {
+    font-family: 'Fraunces', Georgia, serif; font-style: italic; font-weight: 480;
+    font-size: clamp(52px, 7vw, 72px); line-height: 1; color: var(--cream);
+    font-variant-numeric: tabular-nums;
+  }
+  .rate .price.big small { font-family: 'Figtree', sans-serif; font-style: normal; font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
+  .rate p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .rate.flat p, :root:not([data-theme="light"]) .rate .price.big { color: #201913; }
+  }
+  :root[data-theme="dark"] .rate.flat p, :root[data-theme="dark"] .rate .price.big { color: #201913; }
+
+  /* ---------- booking band + card ---------- */
+  .band .book-mode {
+    display: inline-block; margin-bottom: 10px;
+    font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--ink-soft); background: var(--blush);
+    border-radius: 999px; padding: 8px 18px;
+  }
+  .band .book-mode.live { color: var(--cream); background: var(--olive-deep); }
+  .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin-top: 26px; }
+  .field { margin-bottom: 20px; }
+  .field label { display: block; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; }
+  .field input, .field select, .field textarea {
+    width: 100%; box-sizing: border-box;
+    background: var(--cream); color: var(--ink);
+    border: 1px solid var(--hairline); border-radius: 14px;
+    font-family: 'Figtree', sans-serif; font-size: 16px; padding: 14px 16px;
+  }
+  .field textarea { resize: vertical; min-height: 80px; }
+
+  .day-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-bottom: 18px; }
+  .day-btn {
+    border: 1px solid var(--hairline); background: var(--cream); color: var(--ink);
+    border-radius: 14px; padding: 10px 2px; cursor: pointer; text-align: center;
+    font-family: 'Figtree', sans-serif; font-size: 11.5px; line-height: 1.35; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .day-btn b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
+  .day-btn.active { background: var(--bark); color: var(--on-dark); border-color: var(--bark); }
+  .slot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
+  .slot {
+    border: 1px solid var(--hairline); background: var(--cream); color: var(--ink);
+    border-radius: 999px; padding: 12px 4px; cursor: pointer; text-align: center;
+    font-family: 'Figtree', sans-serif; font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums;
+  }
+  .slot.taken { background: var(--slot-taken); color: var(--ink-soft); text-decoration: line-through; cursor: not-allowed; border-color: transparent; }
+  .slot.active { background: var(--olive); border-color: var(--olive); color: var(--cream); }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .slot.active { color: #201913; }
+  }
+  :root[data-theme="dark"] .slot.active { color: #201913; }
+
+  .book-summary { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); font-size: 15px; color: var(--ink-soft); min-height: 24px; }
+  .book-summary b { color: var(--olive-deep); }
+  .book-summary .warn { color: var(--bronze); font-weight: 600; }
+  .confirm { text-align: center; padding: 24px 6px 10px; }
+  .confirm h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(30px, 5vw, 40px); margin-bottom: 12px; color: var(--bronze); }
+  .confirm p { color: var(--ink-soft); font-size: 16px; max-width: 46ch; margin: 0 auto; }
+  .confirm p b { color: var(--ink); }
+  .preview-note { margin-top: 18px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+
+  /* ---------- closing / footer ---------- */
+  .closing { text-align: center; padding-block: 110px; }
+  .closing h2 { max-width: 18ch; margin-inline: auto; }
+  .closing p { color: var(--ink-soft); max-width: 46ch; margin: 0 auto 34px; font-size: 18px; }
+
+  footer { background: var(--blush); padding-block: 54px 80px; }
+  footer .cols { display: flex; flex-wrap: wrap; gap: 34px; justify-content: space-between; font-size: 15px; color: var(--ink-soft); }
+  footer address { font-style: normal; line-height: 1.75; }
+  footer b { color: var(--bronze); font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 16px; }
+  footer a { color: var(--olive-deep); }
+  .fineprint { margin-top: 34px; font-size: 13px; color: var(--ink-soft); max-width: 66ch; line-height: 1.6; border-top: 1px solid var(--hairline); padding-top: 18px; }
+
+  .draft-tag {
+    position: fixed; left: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    font-size: 10.5px; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 600;
+    color: var(--olive-deep); background: var(--card);
+    border: 1px solid var(--olive); border-radius: 999px;
+    padding: 6px 14px; opacity: 0.94; z-index: 50;
+  }
+
+  @media (max-width: 820px) {
+    .hero { min-height: auto; padding-block: 48px 10px; }
+    .hero-row { flex-direction: column-reverse; align-items: flex-start; gap: 34px; }
+    .portrait { flex-basis: auto; width: 200px; }
+    .split, .split.flip { grid-template-columns: 1fr; gap: 34px; }
+    .steps { grid-template-columns: 1fr 1fr; }
+    .rates { grid-template-columns: 1fr; }
+    .book-grid { grid-template-columns: 1fr; }
+    .compare { grid-template-columns: 1fr; }
+    .quotes { grid-template-columns: 1fr; }
+    .quote.feature { margin-top: 0; }
+    section { padding-block: 60px; }
+    .band { padding-block: 70px; }
+    .float-card { padding: 32px 24px; }
+  }
+  @media (max-width: 430px) {
+    .steps { grid-template-columns: 1fr; }
+    .day-strip { grid-template-columns: repeat(3, 1fr); }
+    .hero-cta .btn { flex: 1 1 100%; }
+  }
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Figtree:wght@400;600&display=swap">
+
+<div class="hero-band">
+  <canvas class="scene" data-mode="dark" data-seed="7" aria-hidden="true"></canvas>
+  <span class="photo-hint">Stand-in scene &mdash; Juliet&rsquo;s photo goes here</span>
+  <div class="gutter">
+    <header class="site-head">
+      <div class="brand">Juliet O&rsquo;Barr <em>muscle activation</em></div>
+      <nav>
+        <a href="#about">The Method</a>
+        <a href="#numbers">Why MAT</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#rates">Rates</a>
+        <a href="#book">Book</a>
+      </nav>
+    </header>
+  </div>
+  <div class="hero-center gutter">
+    <div>
+      <p class="eyebrow">Muscle Activation Techniques&reg; &middot; McKinleyville, California</p>
+      <h1>A different way of <em>listening to your body</em></h1>
+      <p>
+        Gentle, precise, hands-on work that <strong>reconnects</strong> your nervous system
+        with the muscles it stopped talking to &mdash; so your body can finally stop bracing.
+      </p>
+      <div class="hero-cta">
+        <a class="btn" href="#book">Book a session</a>
+        <a class="btn secondary quiet" href="#about">How it works</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section id="about" class="gutter">
+  <div class="wrap split">
+    <div class="reveal">
+      <p class="kicker">The method</p>
+      <h2>What is <em>Muscle Activation?</em></h2>
+      <div class="prose">
+        <p>
+          MAT&reg; is a hands-on process developed over 30 years ago by biomechanics specialist
+          Greg Roskopf, used today by professional athletes and everyday bodies alike. It looks
+          at pain and tightness through a different lens: <strong>when a muscle loses clear
+          communication with the nervous system, it quietly goes offline &mdash; and neighboring
+          muscles tighten up to protect the joint it was supposed to steady.</strong>
+        </p>
+        <p>
+          Stretching, massage, and adjustments work on the tight, protective side of that
+          equation. MAT works on the cause: it finds exactly which muscles have gone quiet and
+          wakes them back up with precise palpation and low-force isometrics.
+        </p>
+      </div>
+      <div class="principle">
+        Tight muscles are working overtime to cover for the ones that fell asleep.
+        <small>The core idea behind MAT&reg;</small>
+      </div>
+    </div>
+    <figure class="photo-block reveal" aria-label="Photo placeholder — Juliet working with a client">
+      <canvas class="scene" data-mode="warm" data-seed="21" aria-hidden="true"></canvas>
+      <figcaption>Photo &mdash; hands-on session work</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section id="numbers" class="gutter">
+  <div class="wrap split flip">
+    <figure class="photo-block short reveal" aria-label="Photo placeholder — the McKinleyville studio">
+      <canvas class="scene" data-mode="warm" data-seed="42" aria-hidden="true"></canvas>
+      <figcaption>Photo &mdash; the studio on Central Avenue</figcaption>
+    </figure>
+    <div>
+      <div class="numbers-head reveal">
+        <p class="kicker">By the numbers</p>
+        <h2>The method, <em>at a glance</em></h2>
+      </div>
+      <div class="stats">
+        <div class="stat reveal"><b>30<span style="font-size:0.5em;">+</span></b>
+          <span><strong>Years of refinement</strong> behind the MAT&reg; method Juliet practices</span></div>
+        <div class="stat reveal"><b>Level II</b>
+          <span><strong>MAT&reg; Mastery certification</strong> &mdash; advanced, muscle-by-muscle precision</span></div>
+        <div class="stat reveal"><b>1<span style="font-size:0.5em;">st</span> session</b>
+          <span>Most people <strong>feel the change on the table</strong>, re-tested on the spot</span></div>
+        <div class="stat reveal"><b>6 weeks</b>
+          <span>of weekly work while the change settles in &mdash; <strong>then sessions taper off</strong>. The goal is needing fewer, not more.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <canvas class="scene" data-mode="dark" data-seed="63" aria-hidden="true"></canvas>
+  <span class="photo-hint">Stand-in scene &mdash; real photo goes here</span>
+  <div class="gutter">
+    <div class="float-card reveal">
+      <p class="kicker">The process</p>
+      <h2>What a session <em>looks like</em></h2>
+      <ol class="steps">
+        <li><b>Assess</b><span>A comparative range-of-motion exam, side to side, shows where your body is limiting itself.</span></li>
+        <li><b>Test</b><span>Position-specific muscle tests check whether each muscle answers when asked &mdash; a quiet response is information, not a verdict.</span></li>
+        <li><b>Activate</b><span>Precise fingertip pressure at the muscle&rsquo;s attachment points and low-force isometrics restore the connection.</span></li>
+        <li><b>Re-test</b><span>The same tests, re-run on the spot. The change is measured, not promised.</span></li>
+      </ol>
+      <p class="note-expect">
+        <b>What to expect:</b> you stay fully clothed; the work is gentle and specific &mdash;
+        no cracking, no deep-pressure bracing. Plan on weekly sessions for about the first six
+        weeks, then taper to maintenance as your body holds the work.
+      </p>
+    </div>
+  </div>
+</div>
+
+<section class="gutter">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Is this for me?</p>
+      <h2>Not like massage. <em>Not like anything, really.</em></h2>
+    </div>
+    <div class="compare">
+      <div class="them reveal">
+        <div class="label">Massage &middot; stretching &middot; adjustments</div>
+        <p>Work on the tight, protective tissue &mdash; relief that feels good and often returns by next week, because the underlying instability is still there.</p>
+      </div>
+      <div class="mat-side reveal">
+        <div class="label">MAT&reg;</div>
+        <p>Finds the muscles that have gone quiet and gently wakes them back up &mdash; so the tightness has a reason to let go, and stay gone.</p>
+      </div>
+    </div>
+    <div class="who-grid reveal">
+      <span class="who"><b>Desk-bound</b> necks &amp; hips</span>
+      <span class="who"><b>Gardeners &amp; tradespeople</b> who work bent over</span>
+      <span class="who"><b>Runners &amp; athletes</b> chasing performance</span>
+      <span class="who"><b>Post-injury</b> bodies still compensating</span>
+      <span class="who"><b>Active elders</b> protecting independence</span>
+      <span class="who">Anyone told to <b>&ldquo;just stretch more&rdquo;</b></span>
+    </div>
+  </div>
+</section>
+
+<section id="reviews" class="gutter">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Kind words</p>
+      <h2>What clients <em>notice</em></h2>
+    </div>
+    <div class="quotes">
+      <blockquote class="quote reveal">
+        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;It&rsquo;s so gentle I wasn&rsquo;t sure anything was happening &mdash; until she re-tested my hip and it just&hellip; worked.&rdquo;</p>
+        <cite>&mdash; Sample review</cite>
+      </blockquote>
+      <blockquote class="quote feature reveal">
+        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;I came in with a shoulder I&rsquo;d been babying for two years. Nobody had ever actually tested my muscles one by one before. That first session changed what I thought was possible.&rdquo;</p>
+        <cite>&mdash; Sample review</cite>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>&ldquo;The only thing that&rsquo;s made a lasting difference for my low back. I garden all weekend now.&rdquo;</p>
+        <cite>&mdash; Sample review</cite>
+      </blockquote>
+    </div>
+    <p class="sample-note">Sample quotes for the mock-up &mdash; Juliet&rsquo;s real client words go here</p>
+  </div>
+</section>
+
+<section id="rates" class="gutter">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="kicker">Sessions &amp; rates</p>
+      <h2>One simple rate, <em>always</em></h2>
+    </div>
+    <div class="rates">
+      <div class="rate flat reveal">
+        <div class="price big">$90 <small>per session</small></div>
+        <p>Every visit is the same flat rate &mdash; no packages to decode, no upsells.
+        Whether it&rsquo;s your first full assessment or a maintenance tune-up, a session is $90.</p>
+      </div>
+      <div class="rate reveal">
+        <h3>First visit &middot; 90 min</h3>
+        <p>Health &amp; movement history, a full comparative assessment, your first round of
+        activation, and a plan for the weeks ahead.</p>
+      </div>
+      <div class="rate reveal">
+        <h3>Ongoing &middot; 60 min</h3>
+        <p>Weekly sessions for about the first six weeks while your nervous system consolidates
+        the change, then taper to monthly or seasonal tune-ups.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band" id="book">
+  <canvas class="scene" data-mode="dark" data-seed="88" aria-hidden="true"></canvas>
+  <span class="photo-hint">Stand-in scene &mdash; real photo goes here</span>
+  <div class="gutter">
+    <div class="float-card reveal">
+      <p class="kicker">Booking</p>
+      <h2>Book <em>yourself</em> in</h2>
+      <p class="section-intro" style="margin-bottom:10px;">
+        Open times below are live &mdash; pick one and it&rsquo;s yours.
+      </p>
+      <p class="book-mode" id="book-mode">Demo mode &mdash; slots are examples, bookings aren&rsquo;t saved</p>
+
+      <div id="book-shell">
+        <div class="book-grid">
+          <div>
+            <div class="field">
+              <label for="svc">Session type</label>
+              <select id="svc">
+                <option value="First visit (90 min, $90)">First visit &middot; 90 min &middot; $90</option>
+                <option value="Follow-up session (60 min, $90)">Follow-up session &middot; 60 min &middot; $90</option>
+                <option value="Maintenance tune-up (60 min, $90)">Maintenance tune-up &middot; 60 min &middot; $90</option>
+              </select>
+            </div>
+            <div class="field">
+              <label>Day</label>
+              <div class="day-strip" id="days"></div>
+              <label>Time</label>
+              <div class="slot-grid" id="slots"></div>
+            </div>
+          </div>
+          <div>
+            <div class="field">
+              <label for="bk-name">Your name</label>
+              <input id="bk-name" type="text" autocomplete="name" placeholder="First and last name">
+            </div>
+            <div class="field">
+              <label for="bk-phone">Phone or email</label>
+              <input id="bk-phone" type="text" autocomplete="tel" placeholder="So Juliet can reach you">
+            </div>
+            <div class="field">
+              <label for="bk-notes">Anything Juliet should know? <span style="text-transform:none;letter-spacing:0;font-weight:400;">(optional)</span></label>
+              <textarea id="bk-notes" placeholder="Old injuries, what's been tight, goals&hellip;"></textarea>
+            </div>
+            <button class="btn quiet" id="bk-submit" disabled>Book this time</button>
+            <div class="book-summary" id="bk-summary">Choose a day and time to continue.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="closing gutter">
+  <div class="reveal">
+    <h2>Ready when <em>your body</em> is</h2>
+    <p>Prefer to talk it through first? Juliet is happy to chat about whether MAT is a fit before you book.</p>
+    <a class="btn" href="tel:+17074075392">Call (707) 407&#8209;5392</a>
+  </div>
+</section>
+
+<footer class="gutter">
+  <div class="wrap">
+    <div class="cols">
+      <address>
+        <b>Juliet O&rsquo;Barr &middot; MAT&reg;</b><br>
+        1225 Central Avenue, Suite 8A<br>
+        McKinleyville, CA 95519<br>
+        <a href="https://maps.google.com/?q=1225+Central+Avenue+Suite+8A+McKinleyville+CA+95519">Get directions</a>
+      </address>
+      <div>
+        <b>Contact</b><br>
+        <a href="tel:+17074075392">(707) 407&#8209;5392</a><br>
+        <a href="mailto:juliet.jg56@gmail.com">juliet.jg56@gmail.com</a><br>
+        Sessions by appointment
+      </div>
+      <div>
+        <b>Credentials</b><br>
+        MAT&reg; Mastery, Level II<br>
+        Certified by Muscle Activation<br>Techniques, Inc.
+      </div>
+    </div>
+    <p class="fineprint">
+      Muscle Activation Techniques&reg; is a non-medical assessment and exercise process focused on
+      muscle function. It does not diagnose or treat medical conditions and is a complement to &mdash;
+      not a replacement for &mdash; care from your physician or physical therapist.
+    </p>
+  </div>
+</footer>
+
+<span class="draft-tag">Draft mock-up</span>
+
+<script>
+  (function () {
+    /* ---- painted photo stand-ins: warm out-of-focus interior scenes,
+       replaced by real photography when Juliet's photos arrive ---- */
+    function mulberry(seed) {
+      return function () {
+        seed |= 0; seed = seed + 0x6D2B79F5 | 0;
+        var t = Math.imul(seed ^ seed >>> 15, 1 | seed);
+        t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+        return ((t ^ t >>> 14) >>> 0) / 4294967296;
+      };
+    }
+    var PALETTES = {
+      dark: {
+        base: '#372c22',
+        blobs: ['#c99a6b', '#8a6a45', '#d9b088', '#6b7345', '#f0e0c8', '#a3763f'],
+        veil: 'rgba(46, 36, 26, 0.42)'
+      },
+      warm: {
+        base: '#e6d3ba',
+        blobs: ['#f6e8d2', '#d9ab7c', '#c1cba0', '#b98a5e', '#fdf3e0', '#97a687'],
+        veil: 'rgba(120, 92, 60, 0.10)'
+      }
+    };
+    function paintScene(canvas) {
+      var w = canvas.clientWidth, h = canvas.clientHeight;
+      if (!w || !h) return;
+      var dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      var ctx = canvas.getContext('2d');
+      ctx.scale(dpr, dpr);
+      var pal = PALETTES[canvas.dataset.mode] || PALETTES.dark;
+      var rand = mulberry(parseInt(canvas.dataset.seed || '1', 10));
+      ctx.fillStyle = pal.base;
+      ctx.fillRect(0, 0, w, h);
+      // soft window glow on one side
+      var side = rand() > 0.5 ? 0.18 : 0.82;
+      var glow = ctx.createRadialGradient(w * side, h * 0.3, 10, w * side, h * 0.3, Math.max(w, h) * 0.8);
+      glow.addColorStop(0, 'rgba(253, 240, 214, 0.5)');
+      glow.addColorStop(1, 'rgba(253, 240, 214, 0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(0, 0, w, h);
+      // out-of-focus bokeh blobs
+      for (var i = 0; i < 13; i++) {
+        var cx = rand() * w, cy = rand() * h;
+        var r = (0.12 + rand() * 0.38) * Math.max(w, h);
+        var g = ctx.createRadialGradient(cx, cy, r * 0.1, cx, cy, r);
+        var c = pal.blobs[Math.floor(rand() * pal.blobs.length)];
+        g.addColorStop(0, c + (canvas.dataset.mode === 'dark' ? '59' : '73'));
+        g.addColorStop(1, c + '00');
+        ctx.fillStyle = g;
+        ctx.beginPath();
+        ctx.arc(cx, cy, r, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      // veil for text contrast + gentle vignette
+      ctx.fillStyle = pal.veil;
+      ctx.fillRect(0, 0, w, h);
+      var vig = ctx.createRadialGradient(w / 2, h / 2, Math.min(w, h) * 0.35, w / 2, h / 2, Math.max(w, h) * 0.85);
+      vig.addColorStop(0, 'rgba(30, 22, 14, 0)');
+      vig.addColorStop(1, 'rgba(30, 22, 14, 0.28)');
+      ctx.fillStyle = vig;
+      ctx.fillRect(0, 0, w, h);
+    }
+    function paintAll() {
+      document.querySelectorAll('canvas.scene').forEach(paintScene);
+    }
+    paintAll();
+    window.addEventListener('resize', paintAll);
+
+    /* ---- scroll reveals: only elements below the fold get animated,
+       so the page is fully readable at rest and in thumbnails ---- */
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(function (el) {
+        if (el.getBoundingClientRect().top > window.innerHeight * 0.92) {
+          el.classList.add('pre');
+          io.observe(el);
+        }
+      });
+    }
+
+    /* ---- self-serve booking, backed by Google Sheets (Apps Script) ----
+       Paste Juliet's deployed Apps Script web-app URL below to go live
+       (see SHEETS-SETUP.md in this folder). Left empty, the widget runs
+       in demo mode with example slots and saves nothing.                 */
+    var BOOKING_API = '';
+
+    var daysEl = document.getElementById('days');
+    var slotsEl = document.getElementById('slots');
+    var summary = document.getElementById('bk-summary');
+    var submit = document.getElementById('bk-submit');
+    var shell = document.getElementById('book-shell');
+    var modeEl = document.getElementById('book-mode');
+    var picked = { day: null, slot: null };
+    var live = false;
+    var takenMap = {};
+
+    var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    var days = [];
+    var d = new Date();
+    while (days.length < 6) {
+      d.setDate(d.getDate() + 1);
+      if (d.getDay() !== 0) {
+        var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+        days.push({ label: dayNames[d.getDay()], num: d.getDate(), iso: iso,
+                    full: d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' }) });
+      }
+    }
+    var times = ['9:00 am', '10:30 am', '12:00 pm', '1:30 pm', '3:00 pm', '4:30 pm'];
+
+    function seedDemoTaken() {
+      days.forEach(function (day, i) {
+        for (var s = 0; s < times.length; s++) {
+          if ((i * 7 + s * 3) % 5 === 1) takenMap[day.iso + '|' + times[s]] = true;
+        }
+      });
+    }
+
+    function loadLiveSlots() {
+      if (!BOOKING_API) { seedDemoTaken(); renderSlots(); return; }
+      fetch(BOOKING_API + '?mode=slots')
+        .then(function (r) { return r.json(); })
+        .then(function (data) {
+          takenMap = {};
+          (data.slots || []).forEach(function (s) { takenMap[s.date + '|' + s.time] = true; });
+          live = true;
+          modeEl.textContent = 'Live availability — booking is instant';
+          modeEl.classList.add('live');
+          renderSlots();
+        })
+        .catch(function () { seedDemoTaken(); renderSlots(); });
+    }
+
+    function renderDays() {
+      daysEl.innerHTML = '';
+      days.forEach(function (day, i) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'day-btn' + (picked.day === i ? ' active' : '');
+        b.innerHTML = day.label + '<b>' + day.num + '</b>';
+        b.addEventListener('click', function () {
+          picked.day = i; picked.slot = null;
+          renderDays(); renderSlots(); update();
+        });
+        daysEl.appendChild(b);
+      });
+    }
+
+    function renderSlots() {
+      slotsEl.innerHTML = '';
+      if (picked.day === null) {
+        slotsEl.innerHTML = '<span style="grid-column:1/-1;font-size:14px;color:var(--ink-soft);">Pick a day first.</span>';
+        return;
+      }
+      times.forEach(function (t, s) {
+        var b = document.createElement('button');
+        b.type = 'button';
+        var isTaken = !!takenMap[days[picked.day].iso + '|' + t];
+        b.className = 'slot' + (isTaken ? ' taken' : '') + (picked.slot === s ? ' active' : '');
+        b.textContent = t;
+        b.disabled = isTaken;
+        b.addEventListener('click', function () {
+          picked.slot = s; renderSlots(); update();
+        });
+        slotsEl.appendChild(b);
+      });
+    }
+
+    function update() {
+      if (picked.day !== null && picked.slot !== null) {
+        summary.innerHTML = 'Booking <b>' + times[picked.slot] + '</b> on <b>' + days[picked.day].full + '</b>.';
+        submit.disabled = false;
+      } else {
+        summary.textContent = 'Choose a day and time to continue.';
+        submit.disabled = true;
+      }
+    }
+
+    function showConfirm(name, svc) {
+      var first = name ? ', ' + name.split(' ')[0] : '';
+      shell.innerHTML =
+        '<div class="confirm">' +
+          '<h3>You&rsquo;re booked' + first + '.</h3>' +
+          '<p>Your <b>' + svc + '</b> is set for ' + days[picked.day].full +
+          ' at ' + times[picked.slot] + ' &mdash; it&rsquo;s on Juliet&rsquo;s calendar now. ' +
+          'She&rsquo;ll reach out if anything needs to shift.</p>' +
+          (live ? '' : '<div class="preview-note">Demo mode &mdash; no real appointment was made</div>') +
+        '</div>';
+    }
+
+    submit.addEventListener('click', function () {
+      var svc = document.getElementById('svc').value;
+      var name = document.getElementById('bk-name').value.trim();
+      var contact = document.getElementById('bk-phone').value.trim();
+      var notes = document.getElementById('bk-notes').value.trim();
+      if (!name || !contact) {
+        summary.innerHTML = '<span class="warn">Please add your name and a phone or email so Juliet knows who booked.</span>';
+        return;
+      }
+      if (!live) { showConfirm(name, svc); return; }
+
+      submit.disabled = true;
+      submit.textContent = 'Booking…';
+      fetch(BOOKING_API, {
+        method: 'POST',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          action: 'book',
+          booking: {
+            name: name, contact: contact, service: svc, notes: notes,
+            date: days[picked.day].iso, time: times[picked.slot]
+          }
+        })
+      })
+        .then(function (r) { return r.json(); })
+        .then(function (res) {
+          if (res.success) { showConfirm(name, svc); return; }
+          submit.disabled = false;
+          submit.textContent = 'Book this time';
+          if (res.error === 'slot_taken') {
+            summary.innerHTML = '<span class="warn">That time was just taken &mdash; please pick another.</span>';
+            picked.slot = null;
+            loadLiveSlots();
+          } else {
+            summary.innerHTML = '<span class="warn">Something went wrong. Please try again, or call (707) 407-5392.</span>';
+          }
+        })
+        .catch(function () {
+          submit.disabled = false;
+          submit.textContent = 'Book this time';
+          summary.innerHTML = '<span class="warn">Couldn&rsquo;t reach the calendar. Please try again, or call (707) 407-5392.</span>';
+        });
+    });
+
+    renderDays(); loadLiveSlots(); renderSlots(); update();
+  })();
+</script>
