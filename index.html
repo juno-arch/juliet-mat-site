@@ -14,7 +14,6 @@
     --bronze: #6b5d2a;
     --hairline: #e8dac6;
     --focus: #5f6739;
-    --slot-taken: #e7d8c4;
     --on-dark: #f4e9db;
   }
 
@@ -271,51 +270,17 @@
   .rate .price.big small { font-family: 'Figtree', sans-serif; font-style: normal; font-size: 12.5px; letter-spacing: 0.2em; text-transform: uppercase; opacity: 0.85; }
   .rate p { font-size: 15px; color: var(--ink-soft); line-height: 1.65; }
 
-  /* ---------- booking band + card ---------- */
-  .band .book-mode {
-    display: inline-block; margin-bottom: 10px;
-    font-size: 11.5px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-    color: var(--ink-soft); background: var(--blush);
-    border-radius: 999px; padding: 8px 18px;
-  }
-  .band .book-mode.live { color: var(--cream); background: var(--olive-deep); }
-  .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 38px; margin-top: 26px; }
-  .field { margin-bottom: 20px; }
-  .field label { display: block; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); margin-bottom: 8px; }
-  .field input, .field select, .field textarea {
-    width: 100%; box-sizing: border-box;
-    background: var(--cream); color: var(--ink);
-    border: 1px solid var(--hairline); border-radius: 14px;
-    font-family: 'Figtree', sans-serif; font-size: 16px; padding: 14px 16px;
-  }
-  .field textarea { resize: vertical; min-height: 80px; }
-
-  .day-strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 7px; margin-bottom: 18px; }
-  .day-btn {
-    border: 1px solid var(--hairline); background: var(--cream); color: var(--ink);
-    border-radius: 14px; padding: 10px 2px; cursor: pointer; text-align: center;
-    font-family: 'Figtree', sans-serif; font-size: 11.5px; line-height: 1.35; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-  }
-  .day-btn b { display: block; font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 18px; font-variant-numeric: tabular-nums; }
-  .day-btn.active { background: var(--bark); color: var(--on-dark); border-color: var(--bark); }
-  .slot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 9px; }
-  .slot {
-    border: 1px solid var(--hairline); background: var(--cream); color: var(--ink);
-    border-radius: 999px; padding: 12px 4px; cursor: pointer; text-align: center;
-    font-family: 'Figtree', sans-serif; font-size: 14.5px; font-weight: 600; font-variant-numeric: tabular-nums;
-  }
-  .slot.taken { background: var(--slot-taken); color: var(--ink-soft); text-decoration: line-through; cursor: not-allowed; border-color: transparent; }
-  .slot.active { background: var(--olive); border-color: var(--olive); color: var(--cream); }
-
-  .book-summary { margin-top: 20px; padding-top: 18px; border-top: 1px solid var(--hairline); font-size: 15px; color: var(--ink-soft); min-height: 24px; }
-  .book-summary b { color: var(--olive-deep); }
-  .book-summary .warn { color: var(--bronze); font-weight: 600; }
-  .confirm { text-align: center; padding: 24px 6px 10px; }
-  .confirm h3 { font-family: 'Fraunces', Georgia, serif; font-weight: 400; font-style: italic; font-size: clamp(30px, 5vw, 40px); margin-bottom: 12px; color: var(--bronze); }
-  .confirm p { color: var(--ink-soft); font-size: 16px; max-width: 46ch; margin: 0 auto; }
-  .confirm p b { color: var(--ink); }
-  .preview-note { margin-top: 18px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+  /* ---------- contact band + card ---------- */
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px 38px; margin-top: 30px; }
+  .contact-item { display: flex; flex-direction: column; gap: 7px; }
+  .contact-label { font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; font-weight: 600; color: var(--ink-soft); }
+  .contact-value { font-family: 'Fraunces', Georgia, serif; font-weight: 500; font-size: 20px; line-height: 1.45; color: var(--ink); }
+  a.contact-value { color: var(--olive-deep); text-decoration: none; overflow-wrap: anywhere; }
+  a.contact-value:hover, a.contact-value:focus-visible { text-decoration: underline; text-underline-offset: 4px; }
+  .contact-sub { font-size: 14px; }
+  .contact-sub a { color: var(--olive-deep); }
+  .contact-cta { margin-top: 30px; padding-top: 24px; border-top: 1px solid var(--hairline); display: flex; align-items: center; gap: 18px; flex-wrap: wrap; }
+  .contact-cta .note { font-size: 14.5px; color: var(--ink-soft); }
 
   /* ---------- closing / footer ---------- */
   .closing { text-align: center; padding-block: 110px; }
@@ -344,7 +309,6 @@
     .split, .split.flip { grid-template-columns: 1fr; gap: 34px; }
     .steps { grid-template-columns: 1fr 1fr; }
     .rates { grid-template-columns: 1fr; }
-    .book-grid { grid-template-columns: 1fr; }
     .compare { grid-template-columns: 1fr; }
     .quotes { grid-template-columns: 1fr; }
     .quote.feature { margin-top: 0; }
@@ -352,9 +316,11 @@
     .band { padding-block: 70px; }
     .float-card { padding: 32px 24px; }
   }
+  @media (max-width: 560px) {
+    .contact-grid { grid-template-columns: 1fr; }
+  }
   @media (max-width: 430px) {
     .steps { grid-template-columns: 1fr; }
-    .day-strip { grid-template-columns: repeat(3, 1fr); }
     .hero-cta .btn { flex: 1 1 100%; }
   }
 </style>
@@ -371,7 +337,7 @@
         <a href="#numbers">Why MAT</a>
         <a href="#reviews">Reviews</a>
         <a href="#rates">Rates</a>
-        <a href="#book">Book</a>
+        <a href="#contact">Contact</a>
       </nav>
     </header>
   </div>
@@ -384,7 +350,7 @@
         with the muscles it stopped talking to &mdash; so your body can finally stop bracing.
       </p>
       <div class="hero-cta">
-        <a class="btn" href="#book">Book a session</a>
+        <a class="btn" href="#contact">Get in touch</a>
         <a class="btn secondary quiet" href="#about">How it works</a>
       </div>
     </div>
@@ -554,53 +520,39 @@
   </div>
 </section>
 
-<div class="band" id="book">
+<div class="band" id="contact">
   <canvas class="scene" data-mode="dark" data-seed="88" aria-hidden="true"></canvas>
   <span class="photo-hint">Stand-in scene &mdash; real photo goes here</span>
   <div class="gutter">
     <div class="float-card reveal">
-      <p class="kicker">Booking</p>
-      <h2>Book <em>yourself</em> in</h2>
-      <p class="section-intro" style="margin-bottom:10px;">
-        Open times below are live &mdash; pick one and it&rsquo;s yours.
+      <p class="kicker">Contact</p>
+      <h2>Get <em>in touch</em></h2>
+      <p class="section-intro" style="margin-bottom:0;">
+        Sessions are by appointment &mdash; call, text, or email and Juliet will
+        find a time that fits.
       </p>
-      <p class="book-mode" id="book-mode">Demo mode &mdash; slots are examples, bookings aren&rsquo;t saved</p>
-
-      <div id="book-shell">
-        <div class="book-grid">
-          <div>
-            <div class="field">
-              <label for="svc">Session type</label>
-              <select id="svc">
-                <option value="First visit (90 min, $90)">First visit &middot; 90 min &middot; $90</option>
-                <option value="Follow-up session (60 min, $90)">Follow-up session &middot; 60 min &middot; $90</option>
-                <option value="Maintenance tune-up (60 min, $90)">Maintenance tune-up &middot; 60 min &middot; $90</option>
-              </select>
-            </div>
-            <div class="field">
-              <label>Day</label>
-              <div class="day-strip" id="days"></div>
-              <label>Time</label>
-              <div class="slot-grid" id="slots"></div>
-            </div>
-          </div>
-          <div>
-            <div class="field">
-              <label for="bk-name">Your name</label>
-              <input id="bk-name" type="text" autocomplete="name" placeholder="First and last name">
-            </div>
-            <div class="field">
-              <label for="bk-phone">Phone or email</label>
-              <input id="bk-phone" type="text" autocomplete="tel" placeholder="So Juliet can reach you">
-            </div>
-            <div class="field">
-              <label for="bk-notes">Anything Juliet should know? <span style="text-transform:none;letter-spacing:0;font-weight:400;">(optional)</span></label>
-              <textarea id="bk-notes" placeholder="Old injuries, what's been tight, goals&hellip;"></textarea>
-            </div>
-            <button class="btn quiet" id="bk-submit" disabled>Book this time</button>
-            <div class="book-summary" id="bk-summary">Choose a day and time to continue.</div>
-          </div>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <span class="contact-label">Call or text</span>
+          <a class="contact-value" href="tel:+17074075392">(707) 407&#8209;5392</a>
         </div>
+        <div class="contact-item">
+          <span class="contact-label">Email</span>
+          <a class="contact-value" href="mailto:juliet.jg56@gmail.com">juliet.jg56@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Studio</span>
+          <span class="contact-value">1225 Central Avenue, Suite 8A<br>McKinleyville, CA 95519</span>
+          <span class="contact-sub"><a href="https://maps.google.com/?q=1225+Central+Avenue+Suite+8A+McKinleyville+CA+95519">Get directions</a></span>
+        </div>
+        <div class="contact-item">
+          <span class="contact-label">Hours</span>
+          <span class="contact-value">By appointment<br>[to confirm]</span>
+        </div>
+      </div>
+      <div class="contact-cta">
+        <a class="btn" href="tel:+17074075392">Call (707) 407&#8209;5392</a>
+        <span class="note">Not sure MAT is a fit? Juliet is happy to talk it through first.</span>
       </div>
     </div>
   </div>
@@ -609,7 +561,7 @@
 <section class="closing gutter">
   <div class="reveal">
     <h2>Ready when <em>your body</em> is</h2>
-    <p>Prefer to talk it through first? Juliet is happy to chat about whether MAT is a fit before you book.</p>
+    <p>One conversation is enough to find out whether MAT makes sense for what you&rsquo;re carrying.</p>
     <a class="btn" href="tel:+17074075392">Call (707) 407&#8209;5392</a>
   </div>
 </section>
@@ -732,159 +684,5 @@
       });
     }
 
-    /* ---- self-serve booking, backed by Google Sheets (Apps Script) ----
-       Paste Juliet's deployed Apps Script web-app URL below to go live
-       (see SHEETS-SETUP.md in this folder). Left empty, the widget runs
-       in demo mode with example slots and saves nothing.                 */
-    var BOOKING_API = '';
-
-    var daysEl = document.getElementById('days');
-    var slotsEl = document.getElementById('slots');
-    var summary = document.getElementById('bk-summary');
-    var submit = document.getElementById('bk-submit');
-    var shell = document.getElementById('book-shell');
-    var modeEl = document.getElementById('book-mode');
-    var picked = { day: null, slot: null };
-    var live = false;
-    var takenMap = {};
-
-    var dayNames = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    var days = [];
-    var d = new Date();
-    while (days.length < 6) {
-      d.setDate(d.getDate() + 1);
-      if (d.getDay() !== 0) {
-        var iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
-        days.push({ label: dayNames[d.getDay()], num: d.getDate(), iso: iso,
-                    full: d.toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' }) });
-      }
-    }
-    var times = ['9:00 am', '10:30 am', '12:00 pm', '1:30 pm', '3:00 pm', '4:30 pm'];
-
-    function seedDemoTaken() {
-      days.forEach(function (day, i) {
-        for (var s = 0; s < times.length; s++) {
-          if ((i * 7 + s * 3) % 5 === 1) takenMap[day.iso + '|' + times[s]] = true;
-        }
-      });
-    }
-
-    function loadLiveSlots() {
-      if (!BOOKING_API) { seedDemoTaken(); renderSlots(); return; }
-      fetch(BOOKING_API + '?mode=slots')
-        .then(function (r) { return r.json(); })
-        .then(function (data) {
-          takenMap = {};
-          (data.slots || []).forEach(function (s) { takenMap[s.date + '|' + s.time] = true; });
-          live = true;
-          modeEl.textContent = 'Live availability — booking is instant';
-          modeEl.classList.add('live');
-          renderSlots();
-        })
-        .catch(function () { seedDemoTaken(); renderSlots(); });
-    }
-
-    function renderDays() {
-      daysEl.innerHTML = '';
-      days.forEach(function (day, i) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        b.className = 'day-btn' + (picked.day === i ? ' active' : '');
-        b.innerHTML = day.label + '<b>' + day.num + '</b>';
-        b.addEventListener('click', function () {
-          picked.day = i; picked.slot = null;
-          renderDays(); renderSlots(); update();
-        });
-        daysEl.appendChild(b);
-      });
-    }
-
-    function renderSlots() {
-      slotsEl.innerHTML = '';
-      if (picked.day === null) {
-        slotsEl.innerHTML = '<span style="grid-column:1/-1;font-size:14px;color:var(--ink-soft);">Pick a day first.</span>';
-        return;
-      }
-      times.forEach(function (t, s) {
-        var b = document.createElement('button');
-        b.type = 'button';
-        var isTaken = !!takenMap[days[picked.day].iso + '|' + t];
-        b.className = 'slot' + (isTaken ? ' taken' : '') + (picked.slot === s ? ' active' : '');
-        b.textContent = t;
-        b.disabled = isTaken;
-        b.addEventListener('click', function () {
-          picked.slot = s; renderSlots(); update();
-        });
-        slotsEl.appendChild(b);
-      });
-    }
-
-    function update() {
-      if (picked.day !== null && picked.slot !== null) {
-        summary.innerHTML = 'Booking <b>' + times[picked.slot] + '</b> on <b>' + days[picked.day].full + '</b>.';
-        submit.disabled = false;
-      } else {
-        summary.textContent = 'Choose a day and time to continue.';
-        submit.disabled = true;
-      }
-    }
-
-    function showConfirm(name, svc) {
-      var first = name ? ', ' + name.split(' ')[0] : '';
-      shell.innerHTML =
-        '<div class="confirm">' +
-          '<h3>You&rsquo;re booked' + first + '.</h3>' +
-          '<p>Your <b>' + svc + '</b> is set for ' + days[picked.day].full +
-          ' at ' + times[picked.slot] + ' &mdash; it&rsquo;s on Juliet&rsquo;s calendar now. ' +
-          'She&rsquo;ll reach out if anything needs to shift.</p>' +
-          (live ? '' : '<div class="preview-note">Demo mode &mdash; no real appointment was made</div>') +
-        '</div>';
-    }
-
-    submit.addEventListener('click', function () {
-      var svc = document.getElementById('svc').value;
-      var name = document.getElementById('bk-name').value.trim();
-      var contact = document.getElementById('bk-phone').value.trim();
-      var notes = document.getElementById('bk-notes').value.trim();
-      if (!name || !contact) {
-        summary.innerHTML = '<span class="warn">Please add your name and a phone or email so Juliet knows who booked.</span>';
-        return;
-      }
-      if (!live) { showConfirm(name, svc); return; }
-
-      submit.disabled = true;
-      submit.textContent = 'Booking…';
-      fetch(BOOKING_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({
-          action: 'book',
-          booking: {
-            name: name, contact: contact, service: svc, notes: notes,
-            date: days[picked.day].iso, time: times[picked.slot]
-          }
-        })
-      })
-        .then(function (r) { return r.json(); })
-        .then(function (res) {
-          if (res.success) { showConfirm(name, svc); return; }
-          submit.disabled = false;
-          submit.textContent = 'Book this time';
-          if (res.error === 'slot_taken') {
-            summary.innerHTML = '<span class="warn">That time was just taken &mdash; please pick another.</span>';
-            picked.slot = null;
-            loadLiveSlots();
-          } else {
-            summary.innerHTML = '<span class="warn">Something went wrong. Please try again, or call (707) 407-5392.</span>';
-          }
-        })
-        .catch(function () {
-          submit.disabled = false;
-          submit.textContent = 'Book this time';
-          summary.innerHTML = '<span class="warn">Couldn&rsquo;t reach the calendar. Please try again, or call (707) 407-5392.</span>';
-        });
-    });
-
-    renderDays(); loadLiveSlots(); renderSlots(); update();
   })();
 </script>
