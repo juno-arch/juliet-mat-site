@@ -8,13 +8,15 @@ and maintains it — Juliet decided the site stays on this account.
 
 | File | What it is |
 |---|---|
-| `index.html` | The website — the whole site is this one file |
+| `index.html` | The homepage |
+| `book.html` | Booking page — has a marked slot waiting for the scheduler embed (contact-card fallback shows until then) |
 
-Contact is by phone/text/email (the contact card on the page). There is no
-self-booking system: Juliet preferred a simple contact card. An earlier
-version of this repo had a full self-booking flow (Google Sheets backend,
-admin dashboard, phone-calendar feed) — it lives in the git history if she
-ever wants it back.
+Update Sept 2026: Juliet asked for online booking after all. Plan: an
+agency-style scheduler (Acuity) under Taya's account — Juliet gets a login
+to manage her own hours/appointments, pays nothing. Paste the embed into
+`book.html`'s `#scheduler` slot and delete the `#booking-soon` block.
+(The old v1 self-booking flow still lives in git history but is retired —
+third-party scheduler is the way.)
 
 ## Going live (one time, ~1 minute)
 
