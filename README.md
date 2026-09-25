@@ -9,14 +9,12 @@ and maintains it — Juliet decided the site stays on this account.
 | File | What it is |
 |---|---|
 | `index.html` | The homepage |
-| `book.html` | Booking page — has a marked slot waiting for the scheduler embed (contact-card fallback shows until then) |
+| `book.html` | Redirect to the homepage contact card (old booking link, kept so it never 404s) |
 
-Update Sept 2026: Juliet asked for online booking after all. Plan: an
-agency-style scheduler (Acuity) under Taya's account — Juliet gets a login
-to manage her own hours/appointments, pays nothing. Paste the embed into
-`book.html`'s `#scheduler` slot and delete the `#booking-soon` block.
-(The old v1 self-booking flow still lives in git history but is retired —
-third-party scheduler is the way.)
+Update Sept 24 2026: Juliet decided against online booking (final for now).
+New clients reach her by call, text, or email so she can get a read on them
+first. The Acuity embed was removed; its version lives in git history
+(commit e4c9de0) if she ever wants booking back. Sessions are $100, all 60 min.
 
 ## Going live (one time, ~1 minute)
 
