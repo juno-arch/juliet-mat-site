@@ -240,6 +240,7 @@
 
   /* reviews */
   .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 44px; align-items: start; }
+  .quotes > :only-child { grid-column: 1 / -1; max-width: 760px; margin-top: 0; }
   .quote { background: var(--card); border: 1px solid var(--hairline); border-radius: 22px; padding: 32px 30px 28px; }
   .quote.feature { background: var(--blush); border-color: transparent; margin-top: 26px; }
   .quote .stars { color: var(--olive-deep); font-size: 15px; letter-spacing: 0.3em; margin-bottom: 14px; }
@@ -411,8 +412,8 @@
           <span><strong>MAT&reg; Mastery certification</strong>: advanced, muscle-by-muscle precision</span></div>
         <div class="stat reveal"><b>1<span style="font-size:0.5em;">st</span> session</b>
           <span>Most people <strong>feel the change on the table</strong>, re-tested on the spot</span></div>
-        <div class="stat reveal"><b>6 weeks</b>
-          <span>of weekly work while the change settles in, <strong>then sessions taper off</strong>. The goal is needing fewer, not more.</span></div>
+        <div class="stat reveal"><b>6 sessions</b>
+          <span>is usually when Juliet <strong>really starts to understand</strong> what your body is doing. Long injury histories can take longer. The goal is needing fewer, not more.</span></div>
       </div>
     </div>
   </div>
@@ -426,15 +427,17 @@
       <p class="kicker">The process</p>
       <h2>What a session <em>looks like</em></h2>
       <ol class="steps">
-        <li><b>Assess</b><span>A comparative range-of-motion exam, side to side, shows where your body is limiting itself.</span></li>
+        <li><b>Assess</b><span>A thorough injury history and a comparative range-of-motion exam, side to side, show where your body is limiting itself.</span></li>
         <li><b>Test</b><span>Position-specific muscle tests check whether each muscle answers when asked. A quiet response is information, not a verdict.</span></li>
         <li><b>Activate</b><span>Precise fingertip pressure at the muscle&rsquo;s attachment points and low-force isometrics restore the connection.</span></li>
         <li><b>Re-test</b><span>The same tests, re-run on the spot. The change is measured, not promised.</span></li>
       </ol>
       <p class="note-expect">
         <b>What to expect:</b> you stay fully clothed; the work is gentle and specific,
-        no cracking, no deep-pressure bracing. Plan on weekly sessions for about the first six
-        weeks, then taper to maintenance as your body holds the work.
+        no cracking, no deep-pressure bracing. Early on, sessions work best close together,
+        weekly when schedules allow. Six sessions is usually when Juliet really starts to
+        understand what your body is doing, and longer injury histories can take more. From
+        there, sessions space out as your body holds the work.
       </p>
     </div>
   </div>
@@ -474,28 +477,12 @@
       <h2>What clients <em>notice</em></h2>
     </div>
     <div class="quotes">
-      <blockquote class="quote reveal">
-        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;It&rsquo;s so gentle I wasn&rsquo;t sure anything was happening, until she re-tested my hip and it just&hellip; worked.&rdquo;</p>
-        <cite>Sample review</cite>
-      </blockquote>
       <blockquote class="quote feature reveal">
-        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;I came in with a shoulder I&rsquo;d been babying for two years. Nobody had ever actually tested my muscles one by one before. That first session changed what I thought was possible.&rdquo;</p>
-        <cite>Sample review</cite>
-      </blockquote>
-      <blockquote class="quote reveal">
-        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;The only thing that&rsquo;s made a lasting difference for my low back. I garden all weekend now.&rdquo;</p>
-        <cite>Sample review</cite>
-      </blockquote>
-      <blockquote class="quote reveal">
-        <div class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <p>&ldquo;After two months I didn&rsquo;t need weekly visits anymore, and she was genuinely happy about it. That tells you everything.&rdquo;</p>
-        <cite>Sample review</cite>
+        <div class="stars" aria-label="Five stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+        <p>&ldquo;Juliet has been amazing at healing my body&rsquo;s injuries, aches, and pains. She is an excellent listener which helps her identify how best to help you. She is generous with her knowledge, regularly sharing exercises and palpations I can do to help keep my muscles activated and pain-free. I like to tell her that she has &lsquo;magic hands&rsquo; because I always feel so much better after a session with her.&rdquo;</p>
+        <cite>Lisa Cardenas</cite>
       </blockquote>
     </div>
-    <p class="sample-note">Sample quotes for the mock-up. Juliet&rsquo;s real client words go here</p>
   </div>
 </section>
 
@@ -513,13 +500,13 @@
       </div>
       <div class="rate reveal">
         <h3>First visit &middot; 60 min</h3>
-        <p>Health &amp; movement history, a full comparative assessment, your first round of
+        <p>Health, injury &amp; movement history, a full comparative assessment, your first round of
         activation, and a plan for the weeks ahead.</p>
       </div>
       <div class="rate reveal">
         <h3>Ongoing &middot; 60 min</h3>
-        <p>Weekly sessions for about the first six weeks while your nervous system consolidates
-        the change, then taper to monthly or seasonal tune-ups.</p>
+        <p>Close together at first, weekly when schedules allow, then spacing out to monthly or
+        seasonal tune-ups as your body holds the work.</p>
       </div>
     </div>
   </div>
