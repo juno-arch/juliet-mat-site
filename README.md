@@ -1,8 +1,8 @@
 # Juliet O'Barr — Muscle Activation Techniques
 
 Website for Juliet O'Barr's MAT® practice
-(1225 Central Ave, Suite 8A, McKinleyville, CA). Built by Taya, who hosts
-and maintains it — Juliet decided the site stays on this account.
+(1225 Central Ave, Suite 8A, McKinleyville, CA). Built and cared for by Taya
+(Web Faery).
 
 ## What's in here
 
@@ -11,10 +11,8 @@ and maintains it — Juliet decided the site stays on this account.
 | `index.html` | The homepage |
 | `book.html` | Redirect to the homepage contact card (old booking link, kept so it never 404s) |
 
-Update Sept 24 2026: Juliet decided against online booking (final for now).
-New clients reach her by call, text, or email so she can get a read on them
-first. The Acuity embed was removed; its version lives in git history
-(commit e4c9de0) if she ever wants booking back. Sessions are $100, all 60 min.
+Sessions are scheduled by call, text, or email (no online booking). An older
+booking version lives in git history (commit e4c9de0) if it's ever wanted again.
 
 ## Going live (one time, ~1 minute)
 
