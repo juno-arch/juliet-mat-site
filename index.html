@@ -176,7 +176,10 @@
   #numbers .photo-block img { object-position: 50% 75%; }
   #numbers .split { align-items: stretch; }
   #numbers .stats { height: 100%; }
-  #about .principle { margin: 72px auto 0; text-align: center; }
+  #about .about-head { margin-bottom: 28px; }
+  #about .split { align-items: stretch; }
+  #about .about-text { display: flex; flex-direction: column; justify-content: space-between; gap: 24px; }
+  #about .principle { margin: 0; max-width: none; background: var(--blush); border-radius: 18px; padding: 24px 26px; font-size: clamp(22px, 2.3vw, 27px); }
   .photo-block.warm::after { background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(60,40,22,0.28) 100%), linear-gradient(180deg, rgba(243,215,185,0.20), rgba(150,100,55,0.24)); }
 
   .principle {
@@ -347,7 +350,8 @@
     #about .split, #numbers .split { grid-template-columns: 1fr; gap: 34px; }
     #about .photo-block, #numbers .photo-block { aspect-ratio: 4 / 4.4; width: 100%; max-width: 560px; margin-inline: auto; }
     #numbers .stats { height: auto; }
-    #about .principle { margin-top: 48px; }
+    #about .split { align-items: start; }
+    #about .photo-block { order: -1; }
   }
   @media (max-width: 560px) {
     .contact-grid { grid-template-columns: 1fr; }
@@ -390,10 +394,14 @@
 </div>
 
 <section id="about" class="gutter">
-  <div class="wrap split">
-    <div class="reveal">
+  <div class="wrap">
+    <div class="about-head reveal">
       <p class="kicker">The method</p>
       <h2>What is <em>Muscle Activation?</em></h2>
+    </div>
+  </div>
+  <div class="wrap split">
+    <div class="about-text reveal">
       <div class="prose">
         <p>
           MAT&reg; is a hands-on process developed over 30 years ago by biomechanics specialist
@@ -408,16 +416,14 @@
           wakes them back up with precise palpation and low-force isometrics.
         </p>
       </div>
+      <div class="principle">
+        Tight muscles are working overtime to cover for the ones that fell asleep.
+        <small>The core idea behind MAT&reg;</small>
+      </div>
     </div>
     <figure class="photo-block reveal">
       <img src="images/hands.jpg" alt="Juliet's hands working gently on a client's lower leg" loading="lazy">
     </figure>
-  </div>
-  <div class="wrap">
-    <div class="principle reveal">
-        Tight muscles are working overtime to cover for the ones that fell asleep.
-        <small>The core idea behind MAT&reg;</small>
-    </div>
   </div>
 </section>
 
