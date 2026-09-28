@@ -151,10 +151,15 @@
   /* real photos (Sep 28 shoot) */
   .hero-band.has-photo { background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.62)), url('images/hero.jpg') center 38% / cover no-repeat; }
   .band.photo-process { background: linear-gradient(rgba(40,32,26,0.55), rgba(40,32,26,0.62)), url('images/process.jpg') center bottom / cover no-repeat; }
-  .band.photo-contact { background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.60)), url('images/contact.jpg') center 45% / cover no-repeat; }
+  .band.contact-split .contact-layout { display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 26px; max-width: 1120px; margin: 0 auto; align-items: stretch; }
+  .band.contact-split .float-card { max-width: none; margin: 0; }
+  .contact-photo { margin: 0; border-radius: 30px; overflow: hidden; min-height: 340px; box-shadow: 0 30px 80px rgba(20, 12, 5, 0.35); }
+  .contact-photo img { width: 100%; height: 100%; object-fit: cover; object-position: 38% 50%; display: block; }
+  @media (max-width: 820px) { .band.contact-split .contact-layout { grid-template-columns: 1fr; } .contact-photo { min-height: 0; aspect-ratio: 4 / 3; } }
   .rate a { color: var(--olive-deep); font-weight: 600; }
   .photo-block img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-  .portrait-mini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; float: right; margin: 0 0 12px 18px; border: 3px solid var(--blush); }
+  .photo-block::after { content: ""; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(180deg, rgba(243,229,213,0.12), rgba(107,93,42,0.10)); }
+  .portrait-mini { width: 118px; height: 118px; border-radius: 50%; object-fit: cover; object-position: 50% 45%; float: right; margin: 0 0 12px 18px; border: 3px solid var(--blush); }
   .photo-block figcaption {
     position: relative; z-index: 1; margin-bottom: 18px;
     font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
@@ -515,8 +520,10 @@
   </div>
 </section>
 
-<div class="band photo-contact" id="contact">
+<div class="band contact-split" id="contact">
   <div class="gutter">
+    <div class="contact-layout">
+    <figure class="contact-photo reveal"><img src="images/contact.jpg" alt="Juliet working gently on a client's leg during a MAT session" loading="lazy"></figure>
     <div class="float-card reveal">
       <p class="kicker">Contact</p>
       <img class="portrait-mini" src="images/portrait.jpg" alt="Juliet O'Barr, smiling" loading="lazy">
@@ -550,6 +557,7 @@
           so Juliet can hear what brings you in.</span>
       </div>
     </div>
+  </div>
   </div>
 </div>
 
