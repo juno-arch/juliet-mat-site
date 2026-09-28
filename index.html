@@ -148,6 +148,13 @@
     display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
     position: relative; overflow: hidden; margin: 0;
   }
+  /* real photos (Sep 28 shoot) */
+  .hero-band.has-photo { background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.62)), url('images/hero.jpg') center 38% / cover no-repeat; }
+  .band.photo-process { background: linear-gradient(rgba(40,32,26,0.55), rgba(40,32,26,0.62)), url('images/process.jpg') center 30% / cover no-repeat; }
+  .band.photo-contact { background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.60)), url('images/contact.jpg') center 45% / cover no-repeat; }
+  .rate a { color: var(--olive-deep); font-weight: 600; }
+  .photo-block img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .portrait-mini { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; object-position: 50% 22%; float: right; margin: 0 0 12px 18px; border: 3px solid var(--blush); }
   .photo-block figcaption {
     position: relative; z-index: 1; margin-bottom: 18px;
     font-size: 10.5px; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 600;
@@ -332,9 +339,7 @@
 </style>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,400..600&family=Figtree:wght@400;600&display=swap">
 
-<div class="hero-band">
-  <canvas class="scene" data-mode="dark" data-seed="7" aria-hidden="true"></canvas>
-  <span class="photo-hint">Stand-in scene: Juliet&rsquo;s photo goes here</span>
+<div class="hero-band has-photo">
   <div class="gutter">
     <header class="site-head">
       <div class="brand">Juliet O&rsquo;Barr <em>muscle activation</em></div>
@@ -387,18 +392,16 @@
         <small>The core idea behind MAT&reg;</small>
       </div>
     </div>
-    <figure class="photo-block reveal" aria-label="Photo placeholder: Juliet working with a client">
-      <canvas class="scene" data-mode="warm" data-seed="21" aria-hidden="true"></canvas>
-      <figcaption>Photo: hands-on session work</figcaption>
+    <figure class="photo-block reveal">
+      <img src="images/hands.jpg" alt="Juliet's hands working gently on a client's lower leg" loading="lazy">
     </figure>
   </div>
 </section>
 
 <section id="numbers" class="gutter">
   <div class="wrap split flip">
-    <figure class="photo-block short reveal" aria-label="Photo placeholder: the McKinleyville studio">
-      <canvas class="scene" data-mode="warm" data-seed="42" aria-hidden="true"></canvas>
-      <figcaption>Photo: the studio on Central Avenue</figcaption>
+    <figure class="photo-block short reveal">
+      <img src="images/studio.jpg" alt="Juliet's studio: a treatment table in a calm room with soft lamplight" loading="lazy">
     </figure>
     <div>
       <div class="numbers-head reveal">
@@ -419,9 +422,7 @@
   </div>
 </section>
 
-<div class="band">
-  <canvas class="scene" data-mode="dark" data-seed="63" aria-hidden="true"></canvas>
-  <span class="photo-hint">Stand-in scene: real photo goes here</span>
+<div class="band photo-process">
   <div class="gutter">
     <div class="float-card reveal">
       <p class="kicker">The process</p>
@@ -514,12 +515,11 @@
   </div>
 </section>
 
-<div class="band" id="contact">
-  <canvas class="scene" data-mode="dark" data-seed="88" aria-hidden="true"></canvas>
-  <span class="photo-hint">Stand-in scene: real photo goes here</span>
+<div class="band photo-contact" id="contact">
   <div class="gutter">
     <div class="float-card reveal">
       <p class="kicker">Contact</p>
+      <img class="portrait-mini" src="images/portrait.jpg" alt="Juliet O'Barr, smiling" loading="lazy">
       <h2>Get <em>in touch</em></h2>
       <p class="section-intro" style="margin-bottom:0;">
         Sessions are by appointment: call, text, or email and Juliet will
