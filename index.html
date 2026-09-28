@@ -167,6 +167,7 @@
     border-radius: 999px; padding: 7px 16px; text-align: center; max-width: 80%;
   }
   .photo-block.short { aspect-ratio: 4 / 3.4; }
+  .photo-block.warm::after { background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(60,40,22,0.28) 100%), linear-gradient(180deg, rgba(243,215,185,0.20), rgba(150,100,55,0.24)); }
 
   .principle {
     margin-top: 44px;
@@ -405,7 +406,7 @@
 
 <section id="numbers" class="gutter">
   <div class="wrap split flip">
-    <figure class="photo-block short reveal">
+    <figure class="photo-block short warm reveal">
       <img src="images/studio.jpg" alt="Juliet's studio: a treatment table in a calm room with soft lamplight" loading="lazy">
     </figure>
     <div>
