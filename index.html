@@ -190,8 +190,8 @@
   /* photo-led splits: equal columns, portrait photos that match the text beside them */
   #about .split, #numbers .split { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   #about .photo-block, #numbers .photo-block { aspect-ratio: 4 / 5; }
-  #about .photo-block img { object-position: 42% 55%; }
-  #numbers .photo-block img { object-position: 50% 40%; }
+  #about .photo-block img { object-position: 50% 40%; }
+  #numbers .photo-block img { object-position: 42% 55%; }
   #numbers .split { align-items: stretch; }
   #numbers .stats { height: 100%; }
   #about .about-head { margin-bottom: 28px; }
@@ -202,7 +202,7 @@
   #about, #numbers { overflow-x: clip; --bleed: max(20px, calc((100vw - 1020px) / 2)); }
   #about .split, #numbers .split { align-items: stretch; }
   #about .photo-block, #numbers .photo-block { aspect-ratio: auto; min-height: 600px; }
-  #numbers .photo-block img { object-position: 50% 40%; }
+  #numbers .photo-block img { object-position: 42% 55%; }
   #about .photo-block { margin-right: calc(-1 * var(--bleed)); border-radius: 26px 0 0 26px; }
   #numbers .photo-block { margin-left: calc(-1 * var(--bleed)); border-radius: 0 26px 26px 0; }
   .photo-block.warm::after { background: radial-gradient(ellipse at 50% 45%, rgba(0,0,0,0) 55%, rgba(60,40,22,0.28) 100%), linear-gradient(180deg, rgba(243,215,185,0.20), rgba(150,100,55,0.24)); }
@@ -383,7 +383,7 @@
   @media (max-width: 560px) {
     .contact-grid { grid-template-columns: 1fr; }
     #about .photo-block, #numbers .photo-block { aspect-ratio: 4 / 4.4; }
-    #numbers .photo-block img { object-position: 50% 40%; }
+    #numbers .photo-block img { object-position: 42% 55%; }
     .stats { grid-template-columns: 1fr; }
   }
   @media (max-width: 430px) {
@@ -465,7 +465,7 @@
       </div>
     </div>
     <figure class="photo-block reveal">
-      <img src="images/hands.jpg" alt="Juliet's hands working gently on a client's lower leg" loading="lazy">
+      <img src="images/sitting.jpg" alt="Juliet smiling as she works on a seated client's shoulders" loading="lazy">
     </figure>
   </div>
 </section>
@@ -479,7 +479,7 @@
   </div>
   <div class="wrap split flip">
     <figure class="photo-block reveal">
-      <img src="images/sitting.jpg" alt="Juliet smiling as she works on a seated client's shoulders" loading="lazy">
+      <img src="images/hands.jpg" alt="Juliet's hands working gently on a client's lower leg" loading="lazy">
     </figure>
     <div>
       <div class="stats">
