@@ -149,23 +149,25 @@
     position: relative; overflow: hidden; margin: 0;
   }
   /* real photos (Sep 28 shoot) */
-  /* hero intro: the photo arrives first on its own, then the veil and the words settle on top */
+  /* hero intro (paced like hermoodmentor.com, a little slower): the photo arrives first and slowly
+     settles from a zoom, then the veil deepens and the words glide up one at a time.
+     The small script after the hero adds .wait/.go only once the photo has loaded, so without
+     JavaScript or with reduced motion everything simply shows at rest. */
   .hero-band.has-photo { background: var(--bark); }
-  .hero-band.has-photo::before { content: ""; position: absolute; inset: 0; z-index: 0; background: url('images/hero.jpg') center 38% / cover no-repeat; animation: hero-photo 3.2s cubic-bezier(.2,.7,.3,1) both; }
-  .hero-band.has-photo::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.62)); animation: hero-fade 1.6s ease 1s both; }
-  .hero-band.has-photo .eyebrow, .hero-band.has-photo h1, .hero-band.has-photo .hero-center p, .hero-band.has-photo .hero-cta, .hero-band.has-photo .site-head { animation: hero-rise 1.2s cubic-bezier(.2,.7,.3,1) both; }
-  .hero-band.has-photo .eyebrow { animation-delay: 1.5s; }
-  .hero-band.has-photo h1 { animation-delay: 1.8s; }
-  .hero-band.has-photo .hero-center p { animation-delay: 2.2s; }
-  .hero-band.has-photo .hero-cta { animation-delay: 2.5s; }
-  .hero-band.has-photo .site-head { animation-delay: 2.8s; }
-  @keyframes hero-photo { from { opacity: 0; transform: scale(1.07); } to { opacity: 1; transform: none; } }
+  .hero-band.has-photo::before { content: ""; position: absolute; inset: 0; z-index: 0; background: url('images/hero.jpg') center 38% / cover no-repeat; }
+  .hero-band.has-photo::after { content: ""; position: absolute; inset: 0; z-index: 0; background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.62)); }
+  .hero-band.wait::before, .hero-band.wait::after,
+  .hero-band.wait .eyebrow, .hero-band.wait h1, .hero-band.wait .hero-center p, .hero-band.wait .hero-cta { opacity: 0; }
+  .hero-band.go::before { animation: hero-photo 3.4s cubic-bezier(.22,1,.36,1) both; }
+  .hero-band.go::after { animation: hero-fade 2.4s ease 0.8s both; }
+  .hero-band.go .eyebrow { animation: hero-rise-sm 2s cubic-bezier(.22,1,.36,1) 1.6s both; }
+  .hero-band.go h1 { animation: hero-rise 2.4s cubic-bezier(.22,1,.36,1) 1.9s both; }
+  .hero-band.go .hero-center p { animation: hero-rise-sm 2.2s cubic-bezier(.22,1,.36,1) 2.7s both; }
+  .hero-band.go .hero-cta { animation: hero-rise-sm 2s cubic-bezier(.22,1,.36,1) 3.3s both; }
+  @keyframes hero-photo { from { opacity: 0; transform: scale(1.2); } 20% { opacity: 1; } to { opacity: 1; transform: none; } }
   @keyframes hero-fade { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes hero-rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-band.has-photo::before, .hero-band.has-photo::after, .hero-band.has-photo .eyebrow, .hero-band.has-photo h1,
-    .hero-band.has-photo .hero-center p, .hero-band.has-photo .hero-cta, .hero-band.has-photo .site-head { animation: none; }
-  }
+  @keyframes hero-rise { from { opacity: 0; transform: translateY(64px); } to { opacity: 1; transform: none; } }
+  @keyframes hero-rise-sm { from { opacity: 0; transform: translateY(32px); } to { opacity: 1; transform: none; } }
   .band.photo-process { background: linear-gradient(rgba(40,32,26,0.55), rgba(40,32,26,0.62)), url('images/process.jpg') center bottom / cover no-repeat; }
   .band.photo-contact { background: linear-gradient(rgba(40,32,26,0.50), rgba(40,32,26,0.60)), url('images/contact.jpg') center 45% / cover no-repeat; }
   .rate a { color: var(--olive-deep); font-weight: 600; }
@@ -419,6 +421,20 @@
     </div>
   </div>
 </div>
+<script>
+  (function () {
+    var h = document.querySelector('.hero-band.has-photo');
+    if (!h || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    h.classList.add('wait');
+    var started = false;
+    var go = function () { if (started) return; started = true; h.classList.remove('wait'); h.classList.add('go'); };
+    var im = new Image();
+    im.onload = go; im.onerror = go;
+    im.src = 'images/hero.jpg';
+    if (im.complete) go();
+    setTimeout(go, 3000);
+  })();
+</script>
 
 <section id="about" class="gutter">
   <div class="wrap">
