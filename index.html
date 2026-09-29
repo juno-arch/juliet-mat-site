@@ -261,7 +261,7 @@
   .float-card > .kicker { color: var(--olive-deep); }
   .float-card h2 { color: var(--bronze); font-size: clamp(30px, 5vw, 46px); }
 
-  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; counter-reset: step; list-style: none; }
+  .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 36px; counter-reset: step; list-style: none; padding: 0; }
   .steps li { counter-increment: step; background: var(--blush); border-radius: 999px 999px 18px 18px; padding: 30px 18px 24px; text-align: center; }
   .steps li::before {
     content: counter(step, decimal-leading-zero);
