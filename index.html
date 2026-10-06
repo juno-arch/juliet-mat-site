@@ -325,6 +325,8 @@
   .quotes .reveal.in:nth-child(2) { transition-delay: 0.12s; }
   .quotes .reveal.in:nth-child(3) { transition-delay: 0.24s; }
   .quotes .reveal.in:nth-child(4) { transition-delay: 0.36s; }
+  /* five cards: the 4th spans two rows so the 5th tucks in under the 3rd instead of sitting alone in a row */
+  .quotes > .quote:nth-child(4):nth-last-child(2) { grid-row: span 2; }
   .sample-note {
     margin-top: 22px; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
     font-weight: 600; color: var(--ink-soft);
@@ -379,6 +381,7 @@
     .rates { grid-template-columns: 1fr; }
     .compare { grid-template-columns: 1fr; }
     .quotes { grid-template-columns: 1fr; }
+    .quotes > .quote:nth-child(4):nth-last-child(2) { grid-row: auto; }
     .quote.feature { margin-top: 0; }
     section { padding-block: 60px; }
     .band { padding-block: 70px; }
@@ -621,6 +624,11 @@
         <p>&ldquo;Juliet is truly fantastic and has completely changed the quality of my life! For two years, I chased a chronic hip problem with no relief, until my chiropractor finally referred me to her. Juliet&rsquo;s deep level of knowledge and expertise was obvious from our very first conversation. She fixed my hip issue in just two sessions&mdash;in fact, the pain was mostly gone after the very first visit.</p>
         <p>Beyond being incredibly skilled, Juliet brings a level of care and kindness to her practice that makes you feel instantly comfortable. Once my hip was taken care of, we began working on other chronic issues in my neck and lower back. Today, all of my issues have either completely disappeared or only require occasional maintenance. The treatments themselves are basically pain-free, and Juliet&rsquo;s attentive, compassionate approach ensured I felt supported every step of the way. Thanks to her, I am finally back to the level of activity I love. I cannot recommend her highly enough!&rdquo;</p>
         <cite>Michelle Weston</cite>
+      </blockquote>
+      <blockquote class="quote reveal">
+        <div class="stars" role="img" aria-label="Five stars"><span aria-hidden="true">&#9733;&#9733;&#9733;&#9733;&#9733;</span></div>
+        <p>&ldquo;It&rsquo;s magical! I thought I needed a hip replacement because I was in so much pain. After x-rays indicated I just needed physical therapy. After just two visits with Juliet, I felt dramatically better. She assessed me, taught me simple techniques, and my hip now feels completely normal. She even helped my shoulder! You HAVE to experience Juliet&rsquo;s Muscle Activation Therapy!&rdquo;</p>
+        <cite>Doreen</cite>
       </blockquote>
     </div>
   </div>
